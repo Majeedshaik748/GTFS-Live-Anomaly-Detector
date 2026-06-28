@@ -40,7 +40,7 @@ import requests
 
 logger = logging.getLogger(__name__)
 
-FEED_BASE = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct"
+FEED_BASE = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2F"
 
 # route_id (as it appears in TripUpdate.trip.route_id) -> feed suffix
 # Verified against https://github.com/nolanbconaway/underground and
@@ -69,7 +69,7 @@ class HeadwayObservation:
 
 
 def _feed_url(feed_suffix: str) -> str:
-    return f"{FEED_BASE}/{feed_suffix}"
+    return f"{FEED_BASE}{feed_suffix}"
 
 
 def _fetch_feed_bytes(feed_suffix: str) -> bytes:
