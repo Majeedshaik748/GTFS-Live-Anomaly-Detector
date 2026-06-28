@@ -86,7 +86,7 @@ def _fetch_feed_bytes(feed_suffix: str) -> bytes:
         timeout=REQUEST_TIMEOUT_SECONDS,
     )
     logger.info("Status: %s", resp.status_code)
-logger.info("Response: %s", resp.text[:500])
+    logger.info("Response: %s", resp.text[:500])
     resp.raise_for_status()
     return resp.content
 
