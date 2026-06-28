@@ -74,7 +74,17 @@ def _feed_url(feed_suffix: str) -> str:
 
 def _fetch_feed_bytes(feed_suffix: str) -> bytes:
     url = _feed_url(feed_suffix)
-    resp = requests.get(url, timeout=REQUEST_TIMEOUT_SECONDS)
+
+    headers = {
+        "User-Agent": "GTFS-Live-Anomaly-Detector/1.0",
+        "Accept": "*/*",
+    }
+
+    resp = requests.get(
+        url,
+        headers=headers,
+        timeout=REQUEST_TIMEOUT_SECONDS,
+    )
     resp.raise_for_status()
     return resp.content
 
